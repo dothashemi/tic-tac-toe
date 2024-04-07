@@ -1,0 +1,18 @@
+networks:
+  lan:
+    name: lan
+    external: true
+
+services:
+  tik:
+    container_name: tik
+    image: node:latest
+    volumes:
+      - ./core:/app
+    working_dir: /app
+    networks:
+      lan:
+    ports:
+      - "80:5173"
+    # command: sh -c "npm install && npm run dev -- --host"
+    command: sh -c "sleep infinity"

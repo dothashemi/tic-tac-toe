@@ -1,10 +1,15 @@
 import { useState } from "react";
 
-export default function Player({ name, symbol }) {
+export default function Player({ initialName, symbol }) {
+  const [name, setName] = useState(initialName);
   const [isEditing, setIsEditing] = useState(false);
 
   function handleEditClick() {
     setIsEditing((editing) => !editing);
+  }
+
+  function handleChange(event) {
+    setName(event.target.value);
   }
 
   return (
@@ -16,6 +21,7 @@ export default function Player({ name, symbol }) {
               type="text"
               value={name}
               className="w-32 text-center rounded bg-gray-500"
+              onChange={handleChange}
               required
             />
           ) : (
